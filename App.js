@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MovieRow from './MovieRow'
+
 
 class App extends Component {
 
@@ -9,30 +11,22 @@ class App extends Component {
         super(props);
         console.log('initializer');
 
+
         const movies = [
             {id: 0, poster_src: "https://images-na.ssl-images-amazon.com/images/I/81EzudL0k1L._SX342_.jpg",title: "Dhooom 3", overview: "bollywood movie thats pretty good"},
             {id: 1, poster_src: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/D2-poster-ver2.jpg/220px-D2-poster-ver2.jpg", title: "Dhooom Avengers Edition", overview: "bollywood movie thats also pretty good"}
+
         ];
 
         var movieRows = [];
 
         movies.forEach((movie) => {
             console.log(movie.title);
-            const movieRow = <table key={movie.id}>
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src={movie.poster_src} width="150" alt="poster"/>
-                        </td>
-                        <td>
-                            {movie.title}
-                            <p>{movie.overview}</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+            const movieRow = <MovieRow movie={movie}/>;
             movieRows.push(movieRow)
         });
+
         this.state = {rows: movieRows};
     }
 
@@ -40,8 +34,10 @@ class App extends Component {
     render() {
         return (
             <div>
+
                 <table className="titleBar">
                     <tbody>
+
                         <tr>
                             <td>
                                 <img src={logo} className="App-logo" alt="logo" width='50' />
@@ -65,6 +61,8 @@ class App extends Component {
                 }} placeholder='Enter search term'/>
 
                 {this.state.rows}
+
+
             </div>
         );
     }
