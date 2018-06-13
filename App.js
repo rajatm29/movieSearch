@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import MovieRow from './MovieRow'
 
-
 class App extends Component {
 
     constructor(props) {
