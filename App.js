@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MovieRow from './MovieRow'
+import $ from 'jquery'
+
 
 
 class App extends Component {
@@ -9,25 +11,44 @@ class App extends Component {
     constructor(props) {
 
         super(props);
-        console.log('initializer');
+        this.state = {}
+        // console.log('initializer');
 
 
-        const movies = [
-            {id: 0, poster_src: "https://images-na.ssl-images-amazon.com/images/I/81EzudL0k1L._SX342_.jpg",title: "Dhooom 3", overview: "bollywood movie thats pretty good"},
-            {id: 1, poster_src: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/D2-poster-ver2.jpg/220px-D2-poster-ver2.jpg", title: "Dhooom Avengers Edition", overview: "bollywood movie thats also pretty good"}
+        // const movies = [
+        //     {id: 0, poster_src: "https://images-na.ssl-images-amazon.com/images/I/81EzudL0k1L._SX342_.jpg",title: "Dhooom 3", overview: "bollywood movie thats pretty good"},
+        //     {id: 1, poster_src: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/D2-poster-ver2.jpg/220px-D2-poster-ver2.jpg", title: "Dhooom Avengers Edition", overview: "bollywood movie thats also pretty good"}
+        //
+        // ];
+        //
+        // var movieRows = [];
+        //
+        // movies.forEach((movie) => {
+        //     console.log(movie.title);
+        //
+        //     const movieRow = <MovieRow movie={movie}/>;
+        //     movieRows.push(movieRow)
+        // });
+        //
+        // this.state = {rows: movieRows};
 
-        ];
+        this.performSearch();
+    }
 
-        var movieRows = [];
+    performSearch() {
+        console.log("performing search using movie db")
 
-        movies.forEach((movie) => {
-            console.log(movie.title);
+        const urlString = "";
+        $.ajax({
+            url: urlString,
+            success: (searchResults) => {
+                console.log("successful")
+            },
+            error: (xhr, status, err) => {
+                console.log("failed to fetch data")
+            }
 
-            const movieRow = <MovieRow movie={movie}/>;
-            movieRows.push(movieRow)
-        });
-
-        this.state = {rows: movieRows};
+        })
     }
 
 
