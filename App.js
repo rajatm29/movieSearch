@@ -5,7 +5,6 @@ import MovieRow from './MovieRow'
 import $ from 'jquery'
 
 
-
 class App extends Component {
 
     constructor(props) {
@@ -48,17 +47,30 @@ class App extends Component {
                 console.log("failed to fetch data")
             }
 
+        console.log('initializer');
+
+        const movies = [
+            {id: 0, poster_src: "https://images-na.ssl-images-amazon.com/images/I/81EzudL0k1L._SX342_.jpg",title: "Dhooom 3", overview: "bollywood movie thats pretty good"},
+            {id: 1, poster_src: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/D2-poster-ver2.jpg/220px-D2-poster-ver2.jpg", title: "Dhooom Avengers Edition", overview: "bollywood movie thats also pretty good"}
+
+        ];
+
+        var movieRows = [];
+
+        movies.forEach((movie) => {
+            console.log(movie.title);
+            const movieRow = <MovieRow movie={movie}/>;
+            movieRows.push(movieRow)
+        });
+
         })
     }
-
 
     render() {
         return (
             <div>
-
                 <table className="titleBar">
                     <tbody>
-
                         <tr>
                             <td>
                                 <img src={logo} className="App-logo" alt="logo" width='50' />
@@ -67,7 +79,6 @@ class App extends Component {
                             <td>
                                 <h1> Movies DB Search</h1>
                             </td>
-
                         </tr>
                     </tbody>
                 </table>
@@ -82,8 +93,7 @@ class App extends Component {
                 }} placeholder='Enter search term'/>
 
                 {this.state.rows}
-
-
+            
             </div>
         );
     }
