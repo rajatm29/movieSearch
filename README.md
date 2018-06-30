@@ -1,2 +1,1 @@
-# movieSearch
-Movie searcher with React
+# Movie Searcher using React
